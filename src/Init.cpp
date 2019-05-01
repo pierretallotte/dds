@@ -398,30 +398,33 @@ void CloseDebugFiles()
     ThreadData * thrp = memory.GetPtr(thrId);
     UNUSED(thrp); // To avoid compiler warning
 
+    if(thrp)
+    {
 #ifdef DDS_TOP_LEVEL
-    thrp->fileTopLevel.Close();
+        thrp->fileTopLevel.Close();
 #endif
 
 #ifdef DDS_AB_STATS
-    thrp->fileABstats.Close();
+        thrp->fileABstats.Close();
 #endif
 
 #ifdef DDS_AB_HITS
-    thrp->fileRetrieved.Close();
-    thrp->fileStored.Close();
+        thrp->fileRetrieved.Close();
+        thrp->fileStored.Close();
 #endif
 
 #ifdef DDS_TT_STATS
-    thrp->fileTTstats.Close();
+        thrp->fileTTstats.Close();
 #endif
 
 #ifdef DDS_TIMING
-    thrp->fileTimerList.Close();
+        thrp->fileTimerList.Close();
 #endif
 
 #ifdef DDS_MOVES
-    thrp->fileMoves.Close();
+        thrp->fileMoves.Close();
 #endif
+    }
   }
 }
 
